@@ -1,14 +1,17 @@
 <?php
 require_once "./templates/header.php";
+require_once "./libs/listing.php";
 
-$listings = [
-    ["title" => "test1"],
-    ["title" => "test2"],
-    ["title" => "test3"],
-];
+$listings = getListings();
+
+$categories = [
+    ["name" => "Jeux vidéo", "icon" => "controller"],
+    ["name" => "Vêtements", "icon" => "handbag"],
+    ["name" => "Mobilier", "icon" => "lamp"],
+]
 ?>
 
-<div class="row flex-lg-row-reverse align-items-center g-5 py-5">
+<div class="row flex-lg-row-reverse align-items-center g-5 py-5"><!-- Présentation -->
     <div class="col-10 col-sm-8 col-lg-6">
         <img src="./Assets/img/logo-okaz.png" class="d-block mx-lg-auto img-fluid" alt="Logo de Okaz" width="400" loading="lazy">
     </div>
@@ -22,14 +25,24 @@ $listings = [
     </div>
 </div>
 
-<div class="row text-center">
+<div class="row text-center"><!-- Dernières annonces -->
     <h2>Les dernières annonces</h2>
-    <?php 
-    foreach ($listings as $listing){
+    <?php
+    foreach ($listings as $listing) {
         require "./templates/listing_part.php";
     }
     ?>
+</div>
 
+<div class="py-5" id="hanging-icons"><!-- Les catégories -->
+    <h2 class="pb-2 border-bottom text-center">Les catégories</h2>
+    <div class="row g-4 py-3 row-cols-1 row-cols-lg-3">
+        <?php
+        foreach ($categories as $category) {
+            require "./templates/category_part.php";
+        }
+        ?>
+    </div>
 </div>
 
 <?php
