@@ -6,7 +6,7 @@ require_once "./templates/header.php";
 <div class="container col-7 col-sm-6 col-md-4 col-lg-3 m-auto">
     <form method="post">
 
-        <div class="form-floating">
+        <div class="form-floating mb-3">
             <input name="email" type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
             <label for="floatingInput">Adresse email</label>
         </div>
