@@ -21,14 +21,14 @@ $categories = getCategories();
             <textarea class="form-control" name="description" id="description" rows="5"></textarea>
         </div>
         <div class="mb-3">
-            <label class="form-label" for="price">Prix</label>
-            <input class="form-control" type="number" name="price" id="price">
+            <label for="imageInput" class="form-label">Photo</label>
+            <input type="file" class="form-control" id="imageInput">
         </div>
         <div class="mb-3">
             <label class="form-label" for="category">Categorie</label>
             <select name="category" id="category" class="form-select">
                 <?php foreach ($categories as $key => $category) { ?>
-                        <option value="<?=$key?>"><?=$category["name"]?></option>
+                    <option value="<?= $key ?>"><?= $category["name"] ?></option>
                 <?php } ?>
             </select>
         </div>
