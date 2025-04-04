@@ -37,7 +37,7 @@ $listings = getListings($pdo);
     <div class="col-md-9">
         <div class="row">
             <?php
-            foreach ($listings as $key => $listing) {
+            foreach (array_reverse($listings) as $key => $listing) {
                 require "./templates/listing_part.php";
             }
             ?>

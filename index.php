@@ -26,8 +26,14 @@ $categories = getCategories();
 <div class="row text-center"><!-- Dernières annonces -->
     <h2>Les dernières annonces</h2>
     <?php
-    foreach ($listings as $key => $listing) {
-        require "./templates/listing_part.php";
+    $i = 0;
+    foreach (array_reverse($listings) as $key => $listing) {
+        if ($i<3) {
+            require "./templates/listing_part.php";
+            $i++;
+        } else {
+            break;
+        }
     }
     ?>
 </div>
