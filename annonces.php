@@ -1,8 +1,9 @@
 <?php
 require_once "./templates/header.php";
 require_once "./libs/listing.php";
+require_once "./libs/pdo.php";
 
-$listings = getListings();
+$listings = getListings($pdo);
 
 ?>
 

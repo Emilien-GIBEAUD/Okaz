@@ -1,19 +1,25 @@
 <?php
 require_once "./templates/header.php";
 require_once "./libs/listing.php";
+require_once "./libs/pdo.php";
+
+$error404 = false;
 
 if(isset($_GET["id"])){
     $id = (int)$_GET["id"];
-    $listing = getListingById($id);
-
+    $listing = getListingById($pdo, $id);
+    if (!$listing) {
+        $error404 = true;
+    }
 } else {
-    echo("nok");
+    $error404 = true;
 }
 
 
 ?>
 
 <div class="container col-xxl-8 px-1 py-3">
+    <?php if(isset($listing) && $listing): ?>
     <div class="row flex-lg-row-reverse align-items-center g-5 py-3">
         <div class="col-10 col-sm-8 col-lg-4">
             <img src="./uploads/listing/<?= $listing["image"] ?>" class="d-block mx-lg-auto img-fluid" alt="<?= $listing["title"] ?>" width="700" height="500" loading="lazy">
@@ -24,6 +30,9 @@ if(isset($_GET["id"])){
             <p class="lead"><?= $listing["description"] ?></p>
         </div>
     </div>
+    <?php else: ?>
+    <h1>L'annonce n'existe pas.</h1>
+    <?php endif; ?>
 </div>
 
 <?php

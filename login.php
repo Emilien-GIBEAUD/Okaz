@@ -1,5 +1,23 @@
 <?php
 require_once "./templates/header.php";
+require_once "./libs/pdo.php";
+require_once "./libs/user.php";
+
+$error = null;
+if ($_SERVER["REQUEST_METHOD"] === "POST") {
+    $user = verifyUserLoginPsw($pdo, $_POST["email"], $_POST["password"]);
+    if ($user) {
+        session_regenerate_id(true);
+        $_SESSION["user"] = [
+            "id" => $user["id"],
+            "username" => $user["username"]
+        ];
+        header("Location: index.php");
+    } else {
+        $error = "Email et/ou mot de passe erroné !";
+    }
+}
+
 ?>
 
 <h1>Connexion</h1>
@@ -21,6 +39,14 @@ require_once "./templates/header.php";
                 Se souvenir de moi
             </label>
         </div>
+        
+        <?php if (isset($error)) { ?>
+                <div class="alert alert-danger" role="alert">
+                <?= $error?>
+                </div>
+            <?php } ?>
+
+
         <button class="btn btn-primary w-100 py-2" type="submit">Connexion</button>
     </form>
 </div>

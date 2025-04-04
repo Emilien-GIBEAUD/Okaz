@@ -1,3 +1,7 @@
+<?php 
+session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -26,8 +30,13 @@
             </ul>
 
             <div class="col-md-3 text-end">
-                <a class="btn btn-outline-primary me-2" href="login.php">Connexion</a>
-                <a class="btn btn-primary" href="subscribe.php">Inscription</a>
+                <?php if (isset($_SESSION["user"])) { ?>
+                    <span>Bonjour <?= $_SESSION["user"]["username"]?></span>
+                    <a class="btn btn-primary" href="logout.php">Déconnexion</a>
+                <?php  }else { ?>
+                    <a class="btn btn-outline-primary m-2" href="login.php">Connexion</a>
+                    <a class="btn btn-primary" href="subscribe.php">Inscription</a>
+                <?php } ?>
             </div>
         </header>
 

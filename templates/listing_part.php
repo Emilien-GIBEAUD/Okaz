@@ -4,7 +4,7 @@
             <div class="card-body">
                 <h5 class="card-title"><?= $listing["title"]?></h5>
                 <p class="card-text"><?= $listing["price"]?> €</p>
-            <a href="annonce.php?id=<?= $key ?>" class="btn btn-primary w-100 stretched-link">Voir l'annonce</a>
+            <a href="annonce.php?id=<?= $listing["id"] ?>" class="btn btn-primary w-100 stretched-link">Voir l'annonce</a>
         </div>
     </div>
 </div>
