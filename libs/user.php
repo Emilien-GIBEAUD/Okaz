@@ -21,7 +21,7 @@ function verifyUser($user):array|bool{
         }
     } else {
         // Si le champ utilisateur a été supprimé
-        $errors["username"] = "Le champ nom d'utilisateur n'as pas été envoyé !";
+        $errors["username"] = "Le champ nom d'utilisateur n'a pas été envoyé !";
     }
 
     if (isset($user["email"])) {
@@ -34,7 +34,7 @@ function verifyUser($user):array|bool{
             }
         }
     } else {
-        $errors["username"] = "Le champ adresse email n'as pas été envoyé !";
+        $errors["username"] = "Le champ adresse email n'a pas été envoyé !";
     }
 
     if (isset($user["password"])) {
@@ -50,7 +50,7 @@ function verifyUser($user):array|bool{
             }
         }
     } else {
-        $errors["username"] = "Le champ mot de passe n'as pas été envoyé !";
+        $errors["username"] = "Le champ mot de passe n'a pas été envoyé !";
     }
     if (count($errors)) {
         return $errors;

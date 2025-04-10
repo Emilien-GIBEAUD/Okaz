@@ -4,6 +4,8 @@ require_once "./libs/pdo.php";
 require_once "./libs/user.php";
 
 $error = null;
+
+// Connexion
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $user = verifyUserLoginPsw($pdo, $_POST["email"], $_POST["password"]);
     if ($user) {
@@ -41,10 +43,10 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         </div>
         
         <?php if (isset($error)) { ?>
-                <div class="alert alert-danger" role="alert">
+            <div class="alert alert-danger" role="alert">
                 <?= $error?>
-                </div>
-            <?php } ?>
+            </div>
+        <?php } ?>
 
 
         <button class="btn btn-primary w-100 py-2" type="submit">Connexion</button>

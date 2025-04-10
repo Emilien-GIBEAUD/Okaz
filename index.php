@@ -4,8 +4,8 @@ require_once "./libs/pdo.php";
 require_once "./libs/listing.php";
 require_once "./libs/category.php";
 
-$listings = getListings($pdo);
-$categories = getCategories();
+$listings = getListings($pdo);      // modifier la fonction pour n'appeler que les n dernières annonces (lenteur si beaucoup d'annonces en BDD)
+$categories = getCategories($pdo);
 
 ?>
 

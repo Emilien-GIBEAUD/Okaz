@@ -1,7 +1,7 @@
 <div class="col-md-4 my-2 d-flex">
         <div class="card w-100">
             <?php if ($listing["image"] !== ""): ?>
-                <img src="./uploads/listing/<?= $listing["image"]?>" class="card-img-top h-100" alt="<?= $listing["title"]?>">
+                <img src="./uploads/listing/<?= $listing["image"]?>" class="card-img-top img-fluid" alt="<?= $listing["title"]?>">
             <?php endif; ?>
             <div class="card-body">
                 <h5 class="card-title"><?= $listing["title"]?></h5>
