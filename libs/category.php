@@ -3,7 +3,7 @@
 // Renvoie un tableau contenant toutes les catégories
 function getCategories(PDO $pdo): array {
     $sql = "SELECT id, name, icon
-            FROM category";
+            FROM category ORDER BY name ASC";
 
     $query = $pdo->prepare($sql);
     $query->execute();

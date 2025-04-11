@@ -4,7 +4,7 @@
     </div>
     <div>
         <h3 class="fs-2 text-body-emphasis"><?= $category["name"]?></h3>
-        <a href="#" class="btn btn-primary">
+        <a href="annonces.php?search=&min_price=&max_price=&category=<?= $category["id"]; ?>" class="btn btn-primary">
             Voir la catégorie
         </a>
     </div>

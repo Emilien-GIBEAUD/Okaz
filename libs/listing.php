@@ -1,6 +1,6 @@
 <?php
 
-function getListings(PDO $pdo, array $filters = []): array {
+function getListings(PDO $pdo, array $filters = [], int|null $nbAnnounces=null): array {
     $relevance = "";
     $conditions = [];
     $orderBy = "listing.id DESC";
@@ -20,6 +20,11 @@ function getListings(PDO $pdo, array $filters = []): array {
         $conditions[] = "category_id = :category";
     }
 
+    $nbAnnouncesMax="";
+    if ($nbAnnounces) {
+        $nbAnnouncesMax = " LIMIT $nbAnnounces";
+    }
+
     $where = $conditions ? " WHERE " . implode(" AND ", $conditions) : "";
     // condition ternaire, équivalent de :
     // if (!empty($conditions)) {
@@ -32,7 +37,8 @@ function getListings(PDO $pdo, array $filters = []): array {
             $relevance 
             FROM listing
             $where 
-            ORDER BY $orderBy";
+            ORDER BY $orderBy
+            $nbAnnouncesMax";
 
     $query = $pdo->prepare($sql);
     if (isset($filters["search"])) {

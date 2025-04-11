@@ -4,6 +4,9 @@ require_once "./libs/listing.php";
 require_once "./libs/pdo.php";
 require_once "./libs/category.php";
 
+// Liste des catégories disponnibles
+$categories = getCategories($pdo);
+
 // Gestion des filtres
 $filters = [];
 if(isset($_GET["search"]) && $_GET["search"] !== "") {
@@ -19,10 +22,7 @@ if(isset($_GET["category"])) {
     $filters["category"] = $_GET["category"];
 }
 
-$listings = getListings($pdo, $filters);
-
-// Liste des catégories disponnibles
-$categories = getCategories($pdo);
+$listings = getListings($pdo, $filters,);
 
 ?>
 
@@ -66,7 +66,7 @@ $categories = getCategories($pdo);
                     <option value>- catégorie -</option>    
                     <?php foreach ($categories as $category): ?>
                         <option value="<?= $category["id"]?>" 
-                            <?php if (isset($category["id"]) && $category["id"] == $_GET["category"]) {
+                            <?php if (isset($_GET["category"]) && $category["id"] === (int)$_GET["category"]) {
                                     echo 'selected="selected"';
                                 } ?>>
                             <?= $category["name"] ?>

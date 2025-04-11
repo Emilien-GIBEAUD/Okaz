@@ -4,7 +4,7 @@ require_once "./libs/pdo.php";
 require_once "./libs/listing.php";
 require_once "./libs/category.php";
 
-$listings = getListings($pdo);      // modifier la fonction pour n'appeler que les n dernières annonces (lenteur si beaucoup d'annonces en BDD)
+$listings = getListings($pdo,[],3);
 $categories = getCategories($pdo);
 
 ?>
@@ -26,14 +26,19 @@ $categories = getCategories($pdo);
 <div class="row text-center"><!-- Dernières annonces -->
     <h2>Les dernières annonces</h2>
     <?php
-    $i = 0;
-    foreach (array_reverse($listings) as $key => $listing) {
-        if ($i<3) {
-            require "./templates/listing_part.php";
-            $i++;
-        } else {
-            break;
-        }
+    // origine EGD
+    // $i = 0;
+    // foreach (array_reverse($listings) as $key => $listing) {
+    //     if ($i<3) {
+    //         require "./templates/listing_part.php";
+    //         $i++;
+    //     } else {
+    //         break;
+    //     }
+    // }
+    // qtt gérée dans getListings( , , qtt) par la suite
+    foreach ($listings as $key => $listing) {
+        require "./templates/listing_part.php";
     }
     ?>
 </div>
