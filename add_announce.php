@@ -83,9 +83,9 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                 </div>
             <?php } ?>
 
-Image        </div>
+        </div>
         <div class="mb-3">
-            <label class="form-label" for="category">Categorie</label>
+            <label class="form-label" for="category">Catégorie</label>
             <select name="category" id="category" class="form-select">
                 <?php foreach ($categories as $key => $category) { ?>
                     <option value="<?= $key ?>"><?= $category["name"] ?></option>
