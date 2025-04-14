@@ -72,3 +72,17 @@ function verifyUserLoginPsw(PDO $pdo, string $email, string $password):bool|arra
         return false;
     }
 }
+
+
+/**
+ * Renvoie l'utilisateur à partir de son id
+ * @param PDO $pdo objet pdo
+ * @param int $user_id l'id de l'utilisateur
+ * @return string $username le nom d'utilisateur correspondant
+ */
+function getUserById(PDO $pdo, int $user_id):string{
+    $query = $pdo->prepare("SELECT username FROM user WHERE id = :user_id");
+    $query->execute(["user_id" => $user_id]);
+    $username = $query->fetchColumn();
+    return $username;
+}

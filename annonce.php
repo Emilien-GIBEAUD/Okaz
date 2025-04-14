@@ -2,6 +2,8 @@
 require_once "./templates/header.php";
 require_once "./libs/listing.php";
 require_once "./libs/pdo.php";
+require_once "./libs/tools.php";
+require_once "./libs/user.php";
 
 $error404 = false;
 
@@ -30,6 +32,9 @@ if(isset($_GET["id"])){
             <h1 class="display-5 fw-bold text-body-emphasis lh-1 mb-3"><?= $listing["title"] ?></h1>
             <h2><?= $listing["price"]?> €</h2>
             <p class="lead"><?= $listing["description"] ?></p>
+            <p class="text-end">
+                Annonce postée par <b><?= getUserById($pdo, $listing["user_id"])?></b> le <b><?= dateEnToFr($listing["created_at"])?></b>. 
+            </p>
         </div>
     </div>
     <?php else: ?>

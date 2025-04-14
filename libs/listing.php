@@ -58,7 +58,7 @@ function getListings(PDO $pdo, array $filters = [], int|null $nbAnnounces=null):
 }
 
 function getListingById(PDO $pdo, int $id): array|bool {
-    $sql = "SELECT id, title, description, price, image
+    $sql = "SELECT id, title, description, price, image, user_id, created_at
             FROM listing
             WHERE id = :id";
 
